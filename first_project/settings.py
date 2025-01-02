@@ -101,21 +101,25 @@ DATABASES['default'] = dj_database_url.parse("postgresql://chat_room_db_pc4a_use
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
+
 AUTH_PASSWORD_VALIDATORS = [
-    
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': 8,
+        }
+    },
     {
         'NAME': 'django_password_validators.password_character_requirements.password_validation.PasswordCharacterValidator',
         'OPTIONS': {
-            'min_password_length':8,
-             'min_length_digit': 1,
-             'min_length_alpha': 1,
-             'min_length_special': 1,
-             'min_length_lower': 1,
-             'min_length_upper': 1,
-             'special_characters': "~!@#$%^&*()_+{}\":;'[]"
-         }
+            'min_length_digit': 1,
+            'min_length_alpha': 1,
+            'min_length_special': 1,
+            'min_length_lower': 1,
+            'min_length_upper': 1,
+            'special_characters': "~!@#$%^&*()_+{}\":;'[]"
+        }
     },
-    
 ]
 
 
