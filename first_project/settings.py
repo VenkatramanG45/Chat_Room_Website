@@ -143,7 +143,7 @@ MEDIA_ROOT = BASE_DIR / 'static/images'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CORS configuration - allows all origins (INSECURE FOR PRODUCTION - USE SPECIFIC ORIGINS)
-CORS_ALLOW_ALL_ORIGINS = True # Set to False in production
+CORS_ALLOW_ALL_ORIGINS = False # Set to False in production
 
 
 # For WhiteNoise (static files in production)
