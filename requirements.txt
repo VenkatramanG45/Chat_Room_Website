@@ -6,3 +6,4 @@ psycopg2-binary
 dj-database-url
 django-rest-framework
 django-cors-headers
+django-password-validators
