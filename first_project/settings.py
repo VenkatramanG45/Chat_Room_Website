@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-!fu@b5tw6ab@wpm(npvmxyt1d!(ueeyclzf9e#j7&a*gq%n!&)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -131,32 +131,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-
-STORAGES = {
-    # ...
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
-
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_ROOT = BASE_DIR / 'collected_static' # Crucial for static file collection
+
 MEDIA_URL = '/images/'
-
-STATICFILES_DIRS=[
-    BASE_DIR / 'static'
-]
-
 MEDIA_ROOT = BASE_DIR / 'static/images'
 
 
-STATIC_URL = '/static/'
-
-# for django >= 3.1
-STATICFILES_DIRS = [BASE_DIR / 'static']  
-
 # Default primary key field type
-# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOW_ALL_ORIGINS=True
+# CORS configuration - allows all origins (INSECURE FOR PRODUCTION - USE SPECIFIC ORIGINS)
+CORS_ALLOW_ALL_ORIGINS = False # Set to False in production
+
+
+# For WhiteNoise (static files in production)
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
